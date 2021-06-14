@@ -1,0 +1,15 @@
+<div class="headlines-container">
+    <div class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-control="navbarNav" aria-expand="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+            <ul class="nav navbar-nav" *ngFor="let newsType of newsTypes">
+                <li class="nav-item btn" (click)='setNewsType(newsType)' >{{ newsType }}</li>
+            </ul>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="fetchAPI()">fetchAPI</button>
+    <input type="text" [(ngModel)]="age" placeholder="enter value">
+    <p>{{age}}</p>
+</div>
