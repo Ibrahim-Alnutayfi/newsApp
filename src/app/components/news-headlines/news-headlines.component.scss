@@ -6,15 +6,41 @@
 .headlines-container{
     background-color: #feffff !important;
     border-radius: 15px;
+    padding: 15px;
     #navbarNav{
         ul{
             li{
                 font-size: 24px;
                 color: black;
                 border-radius: 0 0 10px 10px;
-
                 &:active{
                     background-color: darken(#def2f1, 5%);
+                }
+            }
+        }
+    }
+    .news-element{
+        border-radius: 15px;
+        border: 1px solid gray;
+        margin: 20px ;
+        display: inline-flex;
+        padding: 15px;
+        .news-image{
+        width: 100% !important;
+        border-radius: 15px;
+        display: inline;
+        }
+        .news-element-body{
+            .time-author{
+                .time-author-icons{
+                    width: 20px !important;
+                    display: inline;
+                    margin-right: 5px;
+                }
+                p{
+                    display: inline;
+                    color: rebeccapurple;
+                    margin-right: 30px;
                 }
             }
         }

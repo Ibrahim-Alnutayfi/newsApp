@@ -1,6 +1,9 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { NgModule } from '@angular/core';
+import { NewsAPIService } from 'src/app/service/news-api.service';
+import { FormBuilder } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,50 +11,46 @@ import { NgModule } from '@angular/core';
   templateUrl: './news-headlines.component.html',
   styleUrls: ['./news-headlines.component.scss']
 })
-export class NewsHeadlinesComponent implements OnChanges {
- @Input() newsType! : any;
- @Input() age! : any;
 
-  API_KEY = "0acb6d92fc48489f95a6acb977ad6d09"
-  DOMAINS = "wsj.com"
-  newsTypes = [
-    'WallStreetJournal',
-    'Apple',
-    'Tesla',
-    'USBusiness',
-    'TechCrunch'
-  ]
+export class NewsHeadlinesComponent{
+  constructor(private http:HttpClient,private NewsAPIService: NewsAPIService,private fb: FormBuilder,private router: Router) { 
+ }
 
-  constructor(private http:HttpClient) { }
+ pipe = new DatePipe('en-US');
+ newsDetailsList! : any ;
+ newstype : any ;
+ newsTypes = [
+   "Wall Street Journal",
+   "Tech Crunch",
+   "US Business",
+   "Apple",
+   "Tesla",   
+ ];
 
-  ngOnChanges(changes: SimpleChanges) : void {
-    console.log("changes" + changes);
-    console.log("change to ------- : " + this.newsType);
-    alert("It works !!!")
-  }
-  // ngOnInit(){
-  //   console.log("changes :" + this.newsType);  
-  // }
-  // ngDoCheck(){
-  //   console.log("change to2 : " + this.newsType);
-  // }
-  setNewsType(newsType:any){
-    this.newsType = newsType;
-    // console.log("newsType : " + newsType);
-  }
 
-  fetchAPI(){
-    this.http.get("https://newsapi.org/v2/everything?domains="+this.DOMAINS+"&apiKey="+this.API_KEY).subscribe(
-      (res: any) => {
-        console.log(res);
-      },
-      (err) => {
-        if (err.status == 400) {
-          console.log("Bad request");
-        } 
-      }
-    )
+  async setNewsType(newsType:any){
+    if(newsType !== this.newstype){
+      this.newstype = newsType;
+      (await this.NewsAPIService.fetchAPI(this.newstype)).subscribe(
+        (res: any) => {
+          this.newsDetailsList = res.articles
+        },
+        (err:any) => {
+          this.newsDetailsList = [];
+          if (err.status == 400) 
+            console.log("Bad request");
+          else if (err.totalResult == 0)
+            console.log("sorry something went wrong"); 
+        }
+      )
+    }
+    else
+      console.log("yes it's already " +  this.newstype);
   }
 
+  redirectToDetailsPage(newsDetails:any){
+    this.NewsAPIService.updateData(newsDetails)
+    this.router.navigate(['/newsDetails/' + newsDetails.title])
+  }
 
 }

@@ -9,7 +9,24 @@
             </ul>
         </div>
     </div>
-    <button class="btn btn-primary" (click)="fetchAPI()">fetchAPI</button>
-    <input type="text" [(ngModel)]="age" placeholder="enter value">
-    <p>{{age}}</p>
+    <div *ngFor="let newsDetails of newsDetailsList">
+        <div class="news-element">
+            <div class="col-lg-6">
+                <img class="news-image" src = '{{ newsDetails.urlToImage }}' alt='{{newsDetails.title}}'>
+            </div>
+            <div class="col-lg-6 news-element-body">
+                <h3>{{ newsDetails.title }}</h3>
+                <div class="time-author">
+                    <img class="time-author-icons" src='../../../assets/icons/time.png' alt="Published Date">
+                    <p>{{  this.pipe.transform(newsDetails.publishedAt, 'mediumDate') }}</p>
+                    <img class="time-author-icons" src='../../../assets/icons/author.png' alt="Author Name">
+                    <p>{{ newsDetails.author       }}</p>
+                </div>
+                <p>{{newsDetails.description}}</p>
+                <br>
+                <p>source : {{ newsDetails.source.name  }}</p>
+                <button class="btn btn-primary" (click)="redirectToDetailsPage( newsDetails )"> Read more !</button>
+            </div>
+        </div>
+    </div>
 </div>
