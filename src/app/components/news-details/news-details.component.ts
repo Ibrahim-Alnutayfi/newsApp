@@ -10,12 +10,15 @@ import { NewsAPIService } from 'src/app/service/news-api.service';
 })
 
 export class NewsDetailsComponent implements OnInit {
-  fontsize = 60
+  fontsize = 18
   newsData : any 
-  pipe = new DatePipe('en-US');
+  dataPipe = new DatePipe('en-US');
   
   constructor(private NewsAPIService:NewsAPIService,private cookieService: CookieService ) {
+    if(this.cookieService.get('font')){
     this.fontsize = + this.cookieService.get('font')
+    }
+    this.newsData = JSON.parse(this.cookieService.get('newsDetails'))
   }
   cookieValue = this.cookieService.get('font');
   
@@ -28,6 +31,6 @@ export class NewsDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.NewsAPIService.share.subscribe( data => this.newsData = data)
+    this.newsData = JSON.parse(this.cookieService.get('newsDetails'))
   }
 }

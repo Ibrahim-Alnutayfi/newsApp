@@ -4,6 +4,7 @@ import { NewsAPIService } from 'src/app/service/news-api.service';
 import { FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -13,10 +14,10 @@ import { Router } from '@angular/router';
 })
 
 export class NewsHeadlinesComponent{
-  constructor(private http:HttpClient,private NewsAPIService: NewsAPIService,private fb: FormBuilder,private router: Router) { 
+  constructor(private http:HttpClient,private NewsAPIService: NewsAPIService,private fb: FormBuilder,private router: Router,private cookieService: CookieService) { 
  }
 
- pipe = new DatePipe('en-US');
+ dataPipe = new DatePipe('en-US');
  newsDetailsList! : any ;
  newstype : any ;
  newsTypes = [
@@ -26,7 +27,6 @@ export class NewsHeadlinesComponent{
    "Apple",
    "Tesla",   
  ];
-
 
   async setNewsType(newsType:any){
     if(newsType !== this.newstype){
@@ -48,8 +48,10 @@ export class NewsHeadlinesComponent{
       console.log("yes it's already " +  this.newstype);
   }
 
-  redirectToDetailsPage(newsDetails:any){
-    this.NewsAPIService.updateData(newsDetails)
+
+  redirectToDetailsPage(newsDetails:any){ 
+    this.cookieService.set("newsDetails",JSON.stringify(newsDetails))
+    // this.NewsAPIService.updateData(newsDetails)
     this.router.navigate(['/newsDetails/' + newsDetails.title])
   }
 

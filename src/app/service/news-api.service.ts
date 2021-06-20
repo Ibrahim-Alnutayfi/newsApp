@@ -77,9 +77,6 @@ export class NewsAPIService {
 
 
 
-
-
-
 // fetchWallStreetJournal(){
 //      return this.http.get("https://newsapi.org/v2/everything?domains=wsj.com&apiKey="+this.NEWS_API_KEY).subscribe(this.APIValidation)
 //   }

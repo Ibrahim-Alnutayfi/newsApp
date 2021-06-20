@@ -12,7 +12,7 @@ import { NewsDetailsComponent } from './components/news-details/news-details.com
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FontSizeComponent } from './components/font-size/font-size.component';
 import { Store, StoreModule } from '@ngrx/store';
-import { FontReducer } from './reducer/font';
+import { FontReducer } from './reducer/font-size.reducer';
 
 @NgModule({
   declarations: [
