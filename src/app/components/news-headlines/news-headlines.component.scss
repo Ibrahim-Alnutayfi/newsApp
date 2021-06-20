@@ -2,6 +2,7 @@
 
 *{
     font-family: 'Nunito', 'sans-serif';
+    color: #444444;
 }
 .headlines-container{
     background-color: #feffff !important;
@@ -29,8 +30,12 @@
         width: 100% !important;
         border-radius: 15px;
         display: inline;
+        cursor: pointer;
         }
         .news-element-body{
+            .title{
+                cursor: pointer;
+            }
             .time-author{
                 .time-author-icons{
                     width: 20px !important;
@@ -46,3 +51,19 @@
         }
     }
 }
+.callToAction-btn{
+        background-color: #3aafa9 !important;
+        border-radius: 15px;
+        border: 1px solid gray;
+        transition: 0.2s !important;
+        &:hover{
+            background-color: #ffffff !important;
+            border: 1px solid #3aafa9;
+            transition: 0.3s !important;
+            color: #3aafa9;
+        }
+    }
+    .primary-btn{
+            font-size:24px !important;
+            padding: 5px 25px !important;
+        }

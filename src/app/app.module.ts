@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,10 +26,10 @@ import { FontReducer } from './reducer/font-size.reducer';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    // FormsModule,
     StoreModule.forRoot({ fontSize : FontReducer})
   ],
-  providers: [FormBuilder,Store],
+  providers: [Store],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

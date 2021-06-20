@@ -1,3 +1,6 @@
+**{
+     color:#444444 !important;
+}
 .details-container{
     background-color: #feffff !important;
     border-radius: 15px;
@@ -7,4 +10,21 @@
         width: 100% !important;
         border-radius: 15px;
     }
+    .secondary-btn{
+        background-color: #ffffff !important;
+        border: 1px solid #3aafa9;
+        color: #3aafa9;
+        transition: 0.3s !important;
+        border-radius: 15px;
+        &:hover{
+            background-color: #3aafa9 !important;
+            border: 1px solid rgba(128, 128, 128, 0.575);
+            color:#444444;
+            transition: 0.3s !important;
+        }
+    }
+    .back-btn{
+            font-size:20px !important;
+            padding: 5px 25px !important;
+        }
 }

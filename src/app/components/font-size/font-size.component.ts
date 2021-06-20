@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
 import { FontSizeState } from 'src/app/action/fontSizeState.action';
@@ -10,10 +10,9 @@ import { FontSizeState } from 'src/app/action/fontSizeState.action';
 })
 
 export class FontSizeComponent {
-   font_size = '14'
+  font_size = '14'
   @Output() event = new EventEmitter<string>()
 
-   showFontManger = false;
   constructor(private store: Store<FontSizeState>, private cookieService: CookieService) {
 
     this.store.select('fontSize').subscribe(font => {

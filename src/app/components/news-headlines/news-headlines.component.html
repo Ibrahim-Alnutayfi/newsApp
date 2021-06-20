@@ -1,31 +1,31 @@
-<div class="headlines-container">
-    <div class="navbar navbar-expand-lg">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-control="navbarNav" aria-expand="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<div class='headlines-container'>
+    <div class='navbar navbar-expand-lg'>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-control='navbarNav' aria-expand='false' aria-label='Toggle navigation'>
+            <span class='navbar-toggler-icon'></span>
         </button>
-        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-            <ul class="nav navbar-nav" *ngFor="let newsType of newsTypes">
-                <li class="nav-item btn" (click)='setNewsType(newsType)' >{{ newsType }}</li>
+        <div class='collapse navbar-collapse d-flex justify-content-center' id='navbarNav'>
+            <ul class='nav navbar-nav' *ngFor='let newsType of newsTypes'>
+                <li class='nav-item btn' (click)='setNewsType(newsType)' >{{ newsType }}</li>
             </ul>
         </div>
     </div>
-    <div *ngFor="let newsDetails of newsDetailsList">
-        <div class="news-element">
-            <div class="col-lg-6">
-                <img class="news-image" src = '{{ newsDetails.urlToImage }}' alt='{{newsDetails.title}}'>
+    <div *ngFor='let newsDetails of newsDetailsList'>
+        <div class='news-element'>
+            <div class='col-lg-6'>
+                <img (click)='redirectToDetailsPage(newsDetails)' class='news-image' src='{{ newsDetails.urlToImage }}' alt='{{newsDetails.title}}'>
             </div>
-            <div class="col-lg-6 news-element-body">
-                <h3>{{ newsDetails.title }}</h3>
-                <div class="time-author">
-                    <img class="time-author-icons" src='../../../assets/icons/time.png' alt="Published Date">
-                    <p>{{  this.dataPipe.transform(newsDetails.publishedAt, 'mediumDate') }}</p>
-                    <img class="time-author-icons" src='../../../assets/icons/author.png' alt="Author Name">
-                    <p>{{ newsDetails.author       }}</p>
+            <div class='col-lg-6 news-element-body'>
+                <h3 class='title' (click)='redirectToDetailsPage(newsDetails)'>{{ newsDetails.title }}</h3>
+                <div class='time-author'>
+                    <img class='time-author-icons' src='../../../assets/icons/time.png' alt='Published Date'>
+                    <p>{{ this.dataPipe.transform(newsDetails.publishedAt, 'mediumDate') }}</p>
+                    <img class='time-author-icons' src='../../../assets/icons/author.png' alt='Author Name'>
+                    <p>{{ newsDetails.author }}</p>
                 </div>
                 <p>{{newsDetails.description}}</p>
                 <br>
-                <p>source : {{ newsDetails.source.name  }}</p>
-                <button class="btn btn-primary" (click)="redirectToDetailsPage( newsDetails )"> Read more !</button>
+                <p><strong> Source name :     </strong>{{ newsDetails.source.name  }}</p>
+                <button class='primary-btn callToAction-btn' (click)='redirectToDetailsPage(newsDetails)'> Read more !</button>
             </div>
         </div>
     </div>

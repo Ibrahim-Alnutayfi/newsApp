@@ -1,15 +1,16 @@
-<div class="details-container" [style.--fontsize]="fontsize + 'px'">
-    <button class="btn btn-primary" [routerLink]="['/']"> back to headlines page</button>
+<div class='details-container' [style.--fontsize]='fontsize + "px"'>
+    <button class='back-btn secondary-btn' [routerLink]='["/"]'> back to headlines page</button>
     <div >
         <br>
         <br>
-        <img class="news-image" src = '{{ newsData.urlToImage }}' alt='{{ newsData.title }}'>
-        <h2 class=""> {{ newsData.title }} </h2>
-        <p> news author : {{ newsData.author }} </p>
-        <p> news description : {{ newsData.description }} </p>
-        <p> news content : {{ newsData.content }} </p>
-        <p> news publishedAt : {{ this.dataPipe.transform(newsData.publishedAt, 'mediumDate') }} </p>
-        <p> Source name : {{ newsData.source.name }} </p>
+        <img class='news-image' src = '{{ newsData.urlToImage }}' alt='{{ newsData.title }}'>
+        <h2> {{ newsData.title }} </h2>
+        <p> <strong> news author :     </strong> {{ newsData.author }} </p>
+        <p> <strong> news description :</strong> {{ newsData.description }} </p>
+        <p> <strong> news content :    </strong> {{ newsData.content }} </p>
+        <p> <strong> news publishedAt :</strong> {{ this.dataPipe.transform(newsData.publishedAt, 'mediumDate') }} </p>
+        <p> <strong> Source name :     </strong> {{ newsData.source.name }} </p>
     </div>
 </div>
 <app-font-size (event)=receiveFontSize($event)></app-font-size>
+

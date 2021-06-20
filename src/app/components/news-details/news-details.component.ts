@@ -15,10 +15,11 @@ export class NewsDetailsComponent implements OnInit {
   dataPipe = new DatePipe('en-US');
   
   constructor(private NewsAPIService:NewsAPIService,private cookieService: CookieService ) {
-    if(this.cookieService.get('font')){
-    this.fontsize = + this.cookieService.get('font')
-    }
-    this.newsData = JSON.parse(this.cookieService.get('newsDetails'))
+    
+    // if(this.cookieService.get('font'))
+    // this.fontsize = + this.cookieService.get('font')
+    
+    // this.newsData = JSON.parse(this.cookieService.get('newsDetails'))
   }
   cookieValue = this.cookieService.get('font');
   
@@ -31,6 +32,8 @@ export class NewsDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
+     if(this.cookieService.get('font'))
+    this.fontsize = + this.cookieService.get('font')
     this.newsData = JSON.parse(this.cookieService.get('newsDetails'))
   }
 }

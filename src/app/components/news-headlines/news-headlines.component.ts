@@ -14,8 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 
 export class NewsHeadlinesComponent{
-  constructor(private http:HttpClient,private NewsAPIService: NewsAPIService,private fb: FormBuilder,private router: Router,private cookieService: CookieService) { 
- }
+  constructor(private NewsAPIService: NewsAPIService,private router: Router,private cookieService: CookieService) {  }
 
  dataPipe = new DatePipe('en-US');
  newsDetailsList! : any ;
@@ -51,7 +50,6 @@ export class NewsHeadlinesComponent{
 
   redirectToDetailsPage(newsDetails:any){ 
     this.cookieService.set("newsDetails",JSON.stringify(newsDetails))
-    // this.NewsAPIService.updateData(newsDetails)
     this.router.navigate(['/newsDetails/' + newsDetails.title])
   }
 

@@ -1,9 +1,15 @@
 .font-size-container{
-  position:absolute;
+  position:fixed;
   right:5%;
   top: 45%;
+  transform: rotate(-90deg);
+  .font-size-icon{
+    transform: rotate(90deg);
+    width: 30px;
+  }
+
   .range {
-    transform: rotate(-90deg);
+    
     width: 100px;
     height: 15px;
     -webkit-appearance: none;
@@ -12,6 +18,7 @@
     border-radius: 15px;
     overflow: hidden;
   }
+
   .range::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 15px;

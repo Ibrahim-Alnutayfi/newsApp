@@ -1,0 +1,29 @@
+.notFound-container{
+    .notFound-img{
+        width: 100%;
+        border-radius: 15px;
+    }
+    div{
+        color: #444444;
+        display: flex !important;
+        margin-top:-100px !important;
+        margin-left: 70% !important;
+       
+        .callToAction-btn{
+        background-color: #3aafa9 !important;
+        border-radius: 15px;
+        border: 1px solid gray;
+        transition: 0.2s !important;
+        &:hover{
+            background-color: #ffffff !important;
+            border: 1px solid #3aafa9;
+            transition: 0.3s !important;
+            color: #3aafa9;
+        }
+    }
+    .primary-btn{
+            font-size:24px !important;
+            padding: 5px 25px !important;
+        }
+    }
+}
