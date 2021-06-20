@@ -1,7 +1,5 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component } from '@angular/core';
 import { NewsAPIService } from 'src/app/service/news-api.service';
-import { FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';

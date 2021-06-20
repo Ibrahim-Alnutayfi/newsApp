@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, OnChanges, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { NewsAPIService } from 'src/app/service/news-api.service';
 
@@ -14,14 +14,9 @@ export class NewsDetailsComponent implements OnInit {
   newsData : any 
   dataPipe = new DatePipe('en-US');
   
-  constructor(private NewsAPIService:NewsAPIService,private cookieService: CookieService ) {
-    
-    // if(this.cookieService.get('font'))
-    // this.fontsize = + this.cookieService.get('font')
-    
-    // this.newsData = JSON.parse(this.cookieService.get('newsDetails'))
-  }
-  cookieValue = this.cookieService.get('font');
+  
+  constructor(private NewsAPIService:NewsAPIService,private cookieService: CookieService ) { }
+ 
   
   updateData(){
     this.NewsAPIService.updateData(this.newsData)

@@ -26,7 +26,6 @@ import { FontReducer } from './reducer/font-size.reducer';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // FormsModule,
     StoreModule.forRoot({ fontSize : FontReducer})
   ],
   providers: [Store],
